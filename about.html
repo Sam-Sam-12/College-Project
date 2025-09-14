@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Department LIMAT </title>
+    <link rel="icon" href="Images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Times New Roman", serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('Images/standard.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Animated background overlay */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        /* Particles background */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+            }
+            100% {
+                box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+            }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 20px;
+            padding: 30px;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+
+        /* Circular glowing logo */
+        .logo-circle {
+            width: 120px;
+            height: 120px;
+            background: url('Images/animated.gif') no-repeat center center;
+            background-size: cover;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: glow 3s infinite;
+            position: relative;
+        }
+
+        .logo-circle::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, #ff5733, #33ff57, #1e90ff, #f39c12, #8e44ad) border-box;
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .logo-circle:hover {
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.7);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            background: linear-gradient(to right, #ff5733, #33ff57, #1e90ff, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #ff5733, #33ff57, #1e90ff, #f39c12);
+            border-radius: 2px;
+        }
+
+        .description {
+            text-align: center;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            color: #e0e0e0;
+            max-width: 90%;
+        }
+
+        .button-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .dept-link {
+            text-decoration: none;
+            position: relative;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .dept-link:hover {
+            transform: translateX(5px);
+        }
+
+        .neon-button {
+            font-family: "Times New Roman", serif;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid;
+            color: white;
+            padding: 15px 20px;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            width: 100%;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .neon-button i {
+            font-size: 18px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(-10px);
+        }
+
+        .neon-button:hover i {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .neon-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .neon-button:hover::before {
+            left: 100%;
+        }
+
+        .neon-button:nth-child(1) {
+            border-color: #ff5733;
+            color: #ff9373;
+        }
+        .neon-button:nth-child(2) {
+            border-color: #33ff57;
+            color: #85ff9e;
+        }
+        .neon-button:nth-child(3) {
+            border-color: #1e90ff;
+            color: #82c3ff;
+        }
+        .neon-button:nth-child(4) {
+            border-color: #f39c12;
+            color: #f8c471;
+        }
+        .neon-button:nth-child(5) {
+            border-color: #8e44ad;
+            color: #c39bd3;
+        }
+        .neon-button:nth-child(6) {
+            border-color: #1abc9c;
+            color: #76d7c4;
+        }
+        .neon-button:nth-child(7) {
+            border-color: #f1c40f;
+            color: #f9e79f;
+        }
+
+        /* Subtle glowing effect on hover */
+        .neon-button:hover {
+            box-shadow: 0 0 15px currentColor;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Light effect with subtle glow */
+        .neon-button:active {
+            transform: scale(0.98);
+            box-shadow: 0 0 5px currentColor;
+        }
+
+        .back-button {
+            background-color: rgba(34, 34, 34, 0.8);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-button i {
+            margin-right: 8px;
+        }
+
+        .back-button:hover {
+            background-color: rgba(60, 60, 60, 0.9);
+            box-shadow: 0 0 15px rgba(0, 100, 255, 0.7);
+            transform: translateY(-2px);
+        }
+
+        .search-box {
+            width: 100%;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            border-color: #1e90ff;
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .neon-button {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+            
+            .back-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #ff5733, #33ff57, #1e90ff);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #ff3300, #00ff44, #0077ff);
+        }
+
+        /* No results message */
+        .no-results {
+            text-align: center;
+            color: #ff6b6b;
+            display: none;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles background -->
+    <div id="particles-js"></div>
+    
+    <!-- Back Button -->
+    <button class="back-button" onclick="window.location.href='index.html'">
+        <i class="fas fa-arrow-left"></i> Back
+    </button>
+
+    <div class="container">
+        <!-- Circular Logo -->
+        <div class="logo-circle"></div>
+        <h1>Our Departments</h1>
+        
+        <p class="description">Explore our diverse range of engineering departments, each offering cutting-edge programs and opportunities for innovation and growth.</p>
+        
+        <!-- Search Box -->
+        <div class="search-box">
+            <input type="text" id="deptSearch" placeholder="Search departments...">
+            <i class="fas fa-search"></i>
+        </div>
+
+        <div class="button-grid">
+            <a href="Departments/cse.html" class="dept-link">
+                <button class="neon-button">Computer Science Of Engineering <i class="fas fa-laptop-code"></i></button>
+            </a>
+            <a href="Departments/ece.html" class="dept-link">   
+                <button class="neon-button">Electronics and Communication Engineering <i class="fas fa-microchip"></i></button>
+            </a>
+            <a href="Departments/ai&ml.html" class="dept-link">
+                <button class="neon-button">Artificial Intelligence and Machine Learning <i class="fas fa-robot"></i></button>
+            </a>
+            <a href="Departments/aids.html" class="dept-link">
+                <button class="neon-button">Artificial Intelligence and Data Science <i class="fas fa-database"></i></button>
+            </a>
+            <a href="Departments/civil.html" class="dept-link">
+                <button class="neon-button">Civil engineering <i class="fas fa-hard-hat"></i></button>
+            </a>
+        </div>
+        
+        <div id="noResults" class="no-results">
+            No departments found matching your search.
+        </div>
+        
+        <div class="footer">
+            <p>© 2008 Engineering College. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- Script for particles background -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles.js
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#ffffff" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#ffffff",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" },
+                        resize: true
+                    }
+                },
+                retina_detect: true
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('deptSearch');
+            const deptLinks = document.querySelectorAll('.dept-link');
+            const noResults = document.getElementById('noResults');
+            
+            searchInput.addEventListener('keyup', function() {
+                const searchText = this.value.toLowerCase();
+                let visibleCount = 0;
+                
+                deptLinks.forEach(link => {
+                    const buttonText = link.querySelector('.neon-button').textContent.toLowerCase();
+                    if (buttonText.includes(searchText)) {
+                        link.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        link.style.display = 'none';
+                    }
+                });
+                
+                // Show no results message if no departments match the search
+                if (visibleCount === 0 && searchText !== '') {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

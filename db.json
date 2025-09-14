@@ -1,0 +1,17 @@
+{
+"stats": [
+{
+"id": 1,
+"vehicleCount": 5,
+"waitTime": 15,
+"trafficLevel": "low",
+"signalMode": "Adaptive"
+}
+],
+"traffic": [
+{
+"id": 1,
+"level": "low"
+}
+]
+}
